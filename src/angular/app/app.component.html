@@ -1,0 +1,44 @@
+<div style="text-align:center">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" routerLink="/dashboard">{{title}}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span> <!-- BOOTSTRAP RESPONSIVE MENU COLLAPSE -->
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">My School <i class="fa fa-university fa-1" aria-hidden="true"></i><span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/classes">Classes <i class="fa fa-address-book-o fa-1" aria-hidden="true"></i></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/classes">Users <i class="fa fa-user-plus fa-1" aria-hidden="true"></i></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/admin">Admin <i class="fa fa-wrench fa-1" aria-hidden="true"></i></a>
+            </li>
+
+        </ul>
+      </div>
+      <!--The Login is placeholder-->
+      <span class="navbar-text">
+          Signed in as User
+          <a href="#">
+              <i class="fa fa-sign-out"></i>
+          </a>
+      </span>
+  </nav>
+
+
+  <!-- ALL ATTENDEANCE COMPONENTS GET RENDERED IN ROUTER OUTELET-->
+  <router-outlet></router-outlet>
+
+  <!-- GLOBAL MESSAGES/ALERT COMPONENT -->
+  <app-messages></app-messages>
+
+</div>
+
+

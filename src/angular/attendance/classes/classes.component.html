@@ -1,0 +1,86 @@
+<div *ngIf="!loading" class="smooth-enter">
+    <div class="container">
+        <div class="page-header">           
+
+                <button mat-button aria-label="agregar" class="md-icon-button pull-right" (click)="open(classModal)">
+                    <i class="fa fa-plus"></i>
+                    <div class="tooltip" matTooltip="Add Class">
+                        Add a new Class
+                    </div>
+                </button>
+
+
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <!-- <th>ID</th> -->
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Grade</th>
+                    <th>Area</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let class of Classes">
+                        <td>{{class.name}}</td>
+                        <td>{{class.subject.value}}</td>
+                        <td>{{class.grade.value}}</td>
+                        <td>{{class.area.value}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- <button type="button" class="btn btn-primary" (click)="getSubjects()">test</button> -->
+
+        <!-- Add New Class Form Modal -->
+<ng-template #classModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Add New Class</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+
+        <p>Selected Subjects, Grades, and Areas for new class roster.</p>
+
+        <div class="form-group">
+
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Class Name" [(ngModel)]="Class.name" >
+
+            <label for="subject">Subjects</label>
+            <select class="form-control" id="subject" [(ngModel)]="Class.subject.value">
+                <option *ngFor="let item of Subjects" [value]="item.value">{{item.value}}</option>
+            </select>
+
+            <label for="areas">Areas</label>
+            <select class="form-control" id="areas" [(ngModel)]="Class.area.value">
+                <option *ngFor="let item of Areas" [value]="item.value">{{item.value}}</option>
+            </select>
+
+            <label for="grades">Grades</label>
+            <select class="form-control" id="grades" [(ngModel)]="Class.grade.value">
+                <option *ngFor="let item of Grades" [value]="item.value">{{item.value}}</option>
+            </select>
+        </div>
+
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="addClass()">Add</button>
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    </div>
+</ng-template>
+
+<div class="loader" *ngIf="loading">
+    <i class="	fa fa-circle-o-notch fa-spin fa-5x centered"></i>
+</div>

@@ -1,0 +1,90 @@
+<div class="container admin">
+  <div class="row">
+      
+    <!-- SUBJECTS -->
+    <div  class="col">
+        <div class="card text-left" style="width: 18rem;">
+            <div class="card-header">
+                <h3 class="d-inline">Subjects</h3>
+                <button type="button" class="btn btn-primary float-right d-inline" disabled>+</button>
+            </div>
+    
+            <div class="card-body">
+                <tree #treeSC 
+                [tree]="Tree" 
+                [settings]="settings" 
+                id="tree"
+                ></tree>   
+            </div>
+          </div>
+    </div>
+
+      <!-- AREAS -->
+      <div class="col">
+          <div class="card text-left" style="width: 18rem;">
+              <div class="card-header">
+                  <h3 class="d-inline">Areas</h3>
+                  <button type="button" class="btn btn-primary float-right" (click)="open(addModal, 'Area')">+</button>
+              </div>
+      
+              <div class="card-body">
+                  <div *ngFor="let area of Areas">
+                  <div class="form-check" >
+                      <input class="form-check-input" type="checkbox" value="" id="Check" [checked]="area.checked" (change)="checkBox(area.id, $event.target.checked)">
+                      <label class="form-check-label" for="Check">
+                      {{area.value}}
+                      </label>
+                  </div> 
+                </div> 
+              </div>
+          </div>  
+      </div>
+
+      <!-- GRADES -->
+      <div class="col">
+          <div class="card text-left" style="width: 18rem;">
+              <div class="card-header">
+                  <h3 class="d-inline">Grades</h3>
+                  <button type="button" class="btn btn-primary float-right d-inline" (click)="open(addModal, 'Grade')">+</button>
+              </div>
+      
+              <div class="card-body">
+                  <div class="form-check" *ngFor="let grade of Grades">
+                      <input class="form-check-input" type="checkbox" value="" id="Check" [checked]="grade.checked" (change)="checkBox(grade.id, $event.target.checked)">
+                      <label class="form-check-label" for="Check">
+                      {{grade.value}}
+                      </label>
+                  </div>    
+              </div>
+          </div>  
+      </div>
+  </div>
+</div>
+
+<button class="btn btn-primary" (click)="save()">Save</button>
+
+<button class="btn btn-primary" (click)="getTree()">get</button>
+
+<ng-template #addModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title"> {{modalFor}}s</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+
+        <p>Add new {{modalFor}}.&hellip;</p>
+
+        <!-- [(ngModel)]="subjects"  -->
+        <input *ngIf="modalFor == 'Grade'" type="text" class="form-control" placeholder="" [(ngModel)]="grade">
+        <input *ngIf="modalFor == 'Area'" type="text" class="form-control" placeholder="" [(ngModel)]="area" >
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="addItemModal()">Add</button>
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    </div>
+</ng-template>

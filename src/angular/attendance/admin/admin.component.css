@@ -1,0 +1,27 @@
+/* Admin Component private CSS styles */
+
+.treesc {
+
+  text-align: left;
+}
+
+#tree > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ #tree > li {
+  list-style-type: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+  }
+ 
+.admin {
+  padding-top: 5%;
+}
